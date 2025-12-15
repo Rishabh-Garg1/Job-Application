@@ -1,9 +1,7 @@
 package com.rishabh.firstjobapp.job;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.rishabh.firstjobapp.company.Company;
+import jakarta.persistence.*;
 
 @Entity
 public class Job {
@@ -15,6 +13,9 @@ public class Job {
     private String minSalary;
     private String maxSalary;
     private String location;
+
+    @ManyToOne
+    private Company company;
 
     // No-arg constructor required by Jackson for deserialization using setters
     public Job() {
@@ -75,5 +76,13 @@ public class Job {
 
     public void setLocation(String location) {
         this.location = location;
+    }
+
+    public Company getCompany() {
+        return company;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
     }
 }
